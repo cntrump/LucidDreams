@@ -16,22 +16,18 @@ extension SKNode: Layout {
         // `SKNode` has a flipped coordinate system, so invert our Y coordinates.
         let height = parent?.frame.size.height ?? 0
         position = CGPoint(x: rect.midX, y: height - rect.midY)
-    }
-
-    var contents: [Content] {
-        return [self]
-    }
-}
-
-extension SKSpriteNode {
-    override func layout(in rect: CGRect) {
-        super.layout(in: rect)
 
         /*
             `SKSpriteNode`s have a settable size, so we'll update the node's size
             in addition to it's `position` (which is done in `SKNode`'s `layout(in:)`
             method).
         */
-        size = rect.size
+        if let self = self as? SKSpriteNode {
+            self.size = rect.size
+        }
+    }
+
+    var contents: [Content] {
+        return [self]
     }
 }

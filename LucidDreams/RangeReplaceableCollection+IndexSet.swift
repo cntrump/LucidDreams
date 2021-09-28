@@ -10,7 +10,7 @@
 
 import Foundation
 
-extension RangeReplaceableCollection where Index == Int, IndexDistance == Int {
+extension RangeReplaceableCollection where Index == Int {
     /// Returns a collection with elements in `indexes`.
     subscript(indexes: IndexSet) -> Self {
         var new = Self()
